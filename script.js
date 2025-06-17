@@ -45,23 +45,37 @@ const showWinner = (winner) => {
   disableBoxes();
 };
 
-// Check winner
+// Show draw message
+const showDraw = () => {
+  msg.innerText = "It's a Draw!";
+  msgContainer.classList.remove("hide");
+  disableBoxes();
+};
+
+// Check winner or draw
 const checkWinner = () => {
+  let isWinner = false;
+
   for (let pattern of winPatterns) {
     let pos1 = boxes[pattern[0]].innerText;
     let pos2 = boxes[pattern[1]].innerText;
     let pos3 = boxes[pattern[2]].innerText;
 
-    if (pos1 !== "" && pos2 !== "" && pos3 !== "") {
-      if (pos1 === pos2 && pos2 === pos3) {
-        showWinner(pos1);
-        return;
-      }
+    if (pos1 !== "" && pos1 === pos2 && pos2 === pos3) {
+      showWinner(pos1);
+      isWinner = true;
+      return;
     }
+  }
+
+  // Check for draw if no winner
+  let filledBoxes = Array.from(boxes).every((box) => box.innerText !== "");
+  if (!isWinner && filledBoxes) {
+    showDraw();
   }
 };
 
-// Add click listeners
+// Add click listeners to boxes
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
     if (turnO) {
@@ -76,6 +90,6 @@ boxes.forEach((box) => {
   });
 });
 
-// Reset button listeners
+// Button listeners
 resetButton.addEventListener("click", resetGame);
 newBtn.addEventListener("click", resetGame);
