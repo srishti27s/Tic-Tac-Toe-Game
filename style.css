@@ -3,7 +3,7 @@
     padding:0;
 }
 body{
-    background: #132a13;
+    background: #000814;
     text-align: center;
     color: aliceblue;
 }
@@ -30,15 +30,15 @@ body{
     font-size: 10vmin;
     font-weight: bold;
     color: #d90429;
-    background: #ecf39e;
+    background: #ffc300;
 
 }
 #rst-btn{
     padding: 1rem;
     font-size: 1em;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #31572c;
-    color: white;
+    background-color: #ffd60a;
+    color: black;
     border-radius:1rem;
 }
 #new-btn{
